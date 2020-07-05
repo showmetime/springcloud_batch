@@ -1,0 +1,36 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: spring-batch-demo
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/employees?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    hikari:
+      username: root
+      password: root
+  batch:
+    job:
+      # 默认自动执行定义的job，改为false 需要jobLaucher.run执行
+      enabled: false
+      # spring batch 在数据库里面创建默认的数据表 如果不是always则会提示相关表不存在
+    initialize-schema: always
+    # 设置batch表的前缀
+
+
+mybatis:
+  #mapper.xml包生成地址
+  mapper-locations: classpath:mapper/*.xml
+  # pojo生成包地址
+  type-aliases-package: com.demo.springcloud.batch.entity
+resources:
+  logdir: logs/
+  appname: spring-batch-demo
+  #日志打印的基础扫描包
+  basepackage: com.springboot.demo.swaggerdemo
+
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone: http://localhost:6868/eureka/
+#    filter-only-up-instances: true
